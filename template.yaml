@@ -49,8 +49,6 @@ Metadata:
     Description: hello lambda
     Author: shashank
     SpdxLicenseId: Apache-2.0
-    LicenseUrl: LICENSE.txt
-    ReadmeUrl: README.md
     Labels: ['tests']
     SemanticVersion: 0.0.1
     
