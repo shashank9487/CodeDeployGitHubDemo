@@ -5,7 +5,7 @@ phases:
         python: 3.12
   build:
     commands:
-      - sam package --template-file template.yml --s3-bucket sctdms --output-template-file packaged.yml
+      - sam package --template-file template.yaml --s3-bucket sctdms --output-template-file packaged.yml
 artifacts:
   files:
     - packaged.yml
