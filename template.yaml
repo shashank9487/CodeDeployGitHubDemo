@@ -46,7 +46,7 @@ Outputs:
 Metadata:
   AWS::ServerlessRepo::Application:
     Name: my-lambda
-    Description: hello lambda
+    Description: Hello App
     Author: shashank
     SpdxLicenseId: Apache-2.0
     LicenseUrl: LICENSE.txt
