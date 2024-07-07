@@ -36,7 +36,7 @@ def lambda_handler(event, context):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "message": {"response": "Resource is created"},
+            "message": {"response": "Resource is created", "success": True},
             # "location": ip.text.replace("\n", "")
         }),
     }
