@@ -46,7 +46,7 @@ Outputs:
 Metadata:
   AWS::ServerlessRepo::Application:
     Name: my-lambda
-    Description: Configure Pandas Layer
+    Description: Configure Pandas Layer Publish
     Author: shashank
     SpdxLicenseId: Apache-2.0
     LicenseUrl: LICENSE.txt
