@@ -17,4 +17,4 @@ def lambda_handler(event, context):
     chipo_one_prod.fillna(0, inplace=True)
     print(chipo_one_prod)
     chipo.item_name.sort_values()
-    print("Finished")
+    print("Finished tab")
