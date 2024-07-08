@@ -14,7 +14,7 @@ def lambda_handler(event, context):
     chipo.item_price = prices
     chipo_filtered = chipo.drop_duplicates(['item_name','quantity','choice_description'])
     chipo_one_prod = chipo_filtered[chipo_filtered.quantity == 1]
+    chipo_one_prod.fillna(0, inplace=True)
     print(chipo_one_prod)
     chipo.item_name.sort_values()
     print("Finished")
-    
