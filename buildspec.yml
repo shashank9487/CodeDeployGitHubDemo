@@ -5,7 +5,9 @@ phases:
         python: 3.12
   build:
     commands:
-      - sam package --template-file template.yaml --s3-bucket sctdms --output-template-file packaged.yml
+      - pip install -r requirements.txt -t .
+      - aws cloudformation package --template-file template.yaml --s3-bucket sctdms --output-template-file template-out.yaml
 artifacts:
   files:
-    - packaged.yml
+    - template.yaml
+    - template-out.yaml
