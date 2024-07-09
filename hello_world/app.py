@@ -1,3 +1,4 @@
+import boto3
 import pandas as pd
 from decimal import Decimal
 from http import HTTPStatus
@@ -9,6 +10,7 @@ def create_price_label(row):
     return row['name'].title() + " $" + str(price)
 
 def lambda_handler(event, context):
+    client = boto3.client('codepipeline')
     print('event', event)
     url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
     chipo = pd.read_csv(url, sep = '\t')
@@ -20,6 +22,9 @@ def lambda_handler(event, context):
     print(chipo_one_prod)
     chipo.item_name.sort_values()
     print("Finished tab")
-    return {
-        "statusCode": HTTPStatus.OK.value
-    }
+    
+    jobId = event['CodePipeline.job']['id']
+    response = client.put_job_success_result(
+        jobId=jobId
+    )
+    return response
