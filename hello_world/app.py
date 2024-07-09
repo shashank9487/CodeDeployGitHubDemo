@@ -4,6 +4,8 @@ from decimal import Decimal
 from http import HTTPStatus
 
 
+client = boto3.client('codepipeline')
+        
 def create_price_label(row):
     price = Decimal(row['price'])
     price = round(price, 2)
@@ -11,7 +13,6 @@ def create_price_label(row):
 
 def lambda_handler(event, context):
     try:
-        client = boto3.client('codepipeline')
         print('event', event)
         url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
         chipo = pd.read_csv(url, sep = '\t')
@@ -25,15 +26,16 @@ def lambda_handler(event, context):
         print("Finished tab")
         
         jobId = event['CodePipeline.job']['id']
-        response = client.put_job_success_result(
+        client.put_job_success_result(
             jobId=jobId
         )
     except Exception as e:
-        response = client.put_job_failure_result(
+        client.put_job_failure_result(
             jobId=jobId,
              failureDetails={
                 'type': 'JobFailed',
                 'message': e
             }       
         )
-    return response
+    return "Completed"
+
