@@ -23,8 +23,8 @@ def lambda_handler(event, context):
         chipo_one_prod.fillna(0, inplace=True)
         print(chipo_one_prod)
         chipo.item_name.sort_values()
-        print("Finished tab")
-        
+        chipo_salad = chipo[chipo.item_name == "Veggie Salad Bowl"]
+        print(f'How many veggie salads? {len(chipo_salad)}')
         jobId = event['CodePipeline.job']['id']
         client.put_job_success_result(
             jobId=jobId
