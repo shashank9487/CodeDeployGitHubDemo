@@ -25,6 +25,7 @@ def lambda_handler(event, context):
         chipo.item_name.sort_values()
         chipo_salad = chipo[chipo.item_name == "Veggie Salad Bowl"]
         print(f'How many veggie salads? {len(chipo_salad)}')
+        print(f'How many items? {len(chipo_salad)}')
         jobId = event['CodePipeline.job']['id']
         client.put_job_success_result(
             jobId=jobId
